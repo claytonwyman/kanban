@@ -14,6 +14,7 @@
 <script>
 export default {
   name: 'lists',
+  props: ["boardId"],
   mounted() {
       this.$store.dispatch("getLists");
   },
@@ -35,7 +36,7 @@ export default {
   methods: {
     addList() {
       this.$store.dispatch("addList", this.newList);
-      this.newList = { title: "" };
+      this.newList = { title: "", boardId: this.boardId };
     }
   }
 }

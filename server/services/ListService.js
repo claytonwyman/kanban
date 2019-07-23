@@ -9,7 +9,7 @@ let _schema = new Schema({
   boardId: { type: ObjectId, ref: 'Board', required: true }
 }, { timestamps: true })
 
-// // CASCADE ON DELETE
+// CASCADE ON DELETE
 _schema.pre('deleteMany', function (next) {
   //lets find all the lists and remove them
   Promise.all([
