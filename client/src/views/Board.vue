@@ -1,10 +1,27 @@
 <template>
-  <div class="board">{{board.title}}</div>
+  <div class="board">
+    <h1>{{board.title}}</h1>
+    <router-link to="/">Return to boards</router-link>
+    <form @submit.prevent="addList">
+      <input type="text" placeholder="title" v-model="newList.title" required>
+      <button type="submit">Create List</button>
+    </form>
+  </div>
 </template>
 
 <script>
 export default {
   name: "board",
+  mounted() {
+      this.$store.dispatch("getLists");
+    },
+    data() {
+      return {
+        newList: {
+          title: ""
+        }
+      };
+    },
   computed: {
     board() {
       return (
@@ -13,6 +30,12 @@ export default {
           title: "Loading..."
         }
       );
+    }
+  },
+  methods: {
+    addList() {
+      this.$store.dispatch("addList", this.newList);
+      this.newList = { title: "" };
     }
   },
   props: ["boardId"]

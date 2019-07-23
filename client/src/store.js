@@ -27,6 +27,9 @@ export default new Vuex.Store({
     },
     setBoards(state, boards) {
       state.boards = boards
+    },
+    setLists(state, lists) {
+      state.lists = lists
     }
   },
   actions: {
@@ -79,6 +82,18 @@ export default new Vuex.Store({
       api.delete('boards/' + delId)
         .then(res => {
           dispatch('getBoards')
+        })
+    },
+    getLists({ commit, dispatch }) {
+      api.get('lists')
+      .then(res => {
+        commit('setLists', res.data)
+      })
+    },
+    addList({ commit, dispatch }, listData) {
+      api.post('lists', listData)
+        .then(serverList => {
+          dispatch('getLists')
         })
     }
     //#endregion

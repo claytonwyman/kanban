@@ -2,7 +2,7 @@ import _listService from '../services/ListService.js'
 import express from 'express'
 import { Authorize } from '../middleware/authorize'
 
-export default class ListsController {
+export default class ListController {
   constructor() {
     this.router = express.Router()
       .use(Authorize.authenticated)
