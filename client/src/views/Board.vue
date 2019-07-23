@@ -6,6 +6,10 @@
       <input type="text" placeholder="title" v-model="newList.title" required>
       <button type="submit">Create List</button>
     </form>
+
+    <div v-for="list in lists" :key="list._id">
+      <h3>{{list.title}}</h3>
+    </div>
   </div>
 </template>
 
@@ -14,11 +18,12 @@ export default {
   name: "board",
   mounted() {
       this.$store.dispatch("getLists");
-    },
-    data() {
+  },
+  data() {
       return {
         newList: {
-          title: ""
+          title: "",
+          boardId: this.boardId
         }
       };
     },
@@ -29,6 +34,11 @@ export default {
         this.$store.state.boards.find(b => b._id == this.boardId) || {
           title: "Loading..."
         }
+      );
+    },
+    lists() {
+      return (
+        this.$store.state.lists
       );
     }
   },
