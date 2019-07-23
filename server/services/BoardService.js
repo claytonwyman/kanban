@@ -11,14 +11,14 @@ let _schema = new Schema({
   authorId: { type: ObjectId, ref: 'User', required: true }
 }, { timestamps: true })
 
-//CASCADE ON DELETE
-_schema.pre('findOneAndRemove', function (next) {
+// CASCADE ON DELETE
+// _schema.pre('findOneAndRemove', function (next) {
   //lets find all the lists and remove them
-  Promise.all([
-    _listRepo.deleteMany({ boardId: this._conditions._id })
-  ])
-    .then(() => next())
-    .catch(err => next(err))
-})
+  // Promise.all([
+  //   _listRepo.deleteMany({ boardId: this._conditions._id })
+  // ])
+  //   .then(() => next())
+  //   .catch(err => next(err))
+// })
 
 export default mongoose.model('Board', _schema)
