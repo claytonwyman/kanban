@@ -12,19 +12,17 @@ import lists from "../components/List"
 
 export default {
   name: "board",
+  props: ["boardId"],
+  mounted(){
+    this.$store.dispatch("getActiveBoard", this.boardId)
+  },
   computed: {
     board() {
-      return (
-        //FIXME This does not work on page reload because the boards array is empty in the store
-        this.$store.state.boards.find(b => b._id == this.boardId) || {
-          title: "Loading..."
-        }
-      );
+      return this.$store.state.activeBoard
     }
   },
   components: {
     lists
   },
-  props: ["boardId"]
 };
 </script>

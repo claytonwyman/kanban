@@ -17,7 +17,7 @@ export default {
   name: 'lists',
   props: ["boardId"],
   mounted() {
-      this.$store.dispatch("getLists");
+      this.$store.dispatch("getLists", this.boardId);
   },
   data() {
     return {
