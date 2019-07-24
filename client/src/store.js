@@ -20,7 +20,8 @@ export default new Vuex.Store({
     user: {},
     boards: [],
     activeBoard: {},
-    lists: []
+    lists: [],
+    activeList: {}
   },
   mutations: {
     setUser(state, user) {
@@ -34,6 +35,9 @@ export default new Vuex.Store({
     },
     setLists(state, lists) {
       state.lists = lists
+    },
+    setActiveList(state, list){
+      state.activeList = list
     }
   },
   actions: {
@@ -78,9 +82,9 @@ export default new Vuex.Store({
     },
     getActiveBoard({commit,dispatch}, payload){
       api.get('boards/' + payload)
-    .then(res =>{
-      commit("setActiveBoard", res.data)
-    })
+        .then(res =>{
+          commit("setActiveBoard", res.data)
+      })
     },
     addBoard({ commit, dispatch }, boardData) {
       api.post('boards', boardData)
@@ -99,6 +103,12 @@ export default new Vuex.Store({
       .then(res => {
         console.log(res.data)
         commit('setLists', res.data)
+      })
+    },
+    getActiveList({commit,dispatch}, payload){
+      api.get('lists/' + payload)
+        .then(res =>{
+          commit("setActiveList", res.data)
       })
     },
     addList({ commit, dispatch }, listData) {
