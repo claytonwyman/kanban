@@ -8,6 +8,7 @@ export default class TaskController {
       .use(Authorize.authenticated)
       .get('', this.getAll)
       .get('/:id', this.getById)
+      .get('/:id/tasks', this.getCommentsAtTask)
       .post('', this.create)
       .put('/:id', this.edit)
       .delete('/:id', this.delete)
@@ -32,6 +33,15 @@ export default class TaskController {
       let data = await _taskService.findOne({ _id: req.params.id, authorId: req.session.uid })
       return res.send(data)
     } catch (error) { next(error) }
+  }
+
+  async getCommentsAtTask(req, res,next){
+    try {
+      let data = await CommentService.find({taskId: req.params.id})
+      return res.send(data)
+    } catch (error) {
+      next(error)
+    }
   }
 
   async create(req, res, next) {
