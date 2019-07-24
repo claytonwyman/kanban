@@ -1,4 +1,5 @@
 import _taskService from '../services/TaskService.js'
+import CommentService from '../services/CommentService.js'
 import express from 'express'
 import { Authorize } from '../middleware/authorize'
 
@@ -8,7 +9,7 @@ export default class TaskController {
       .use(Authorize.authenticated)
       .get('', this.getAll)
       .get('/:id', this.getById)
-      .get('/:id/tasks', this.getCommentsAtTask)
+      .get('/:id/comments', this.getCommentsAtTask)
       .post('', this.create)
       .put('/:id', this.edit)
       .delete('/:id', this.delete)
