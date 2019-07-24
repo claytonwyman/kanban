@@ -8,6 +8,7 @@
 export default {
     name: 'tasks',
     props: ['listId']
+}
 </script>
 
 <style>

@@ -31,7 +31,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getActiveBoard", this.boardId),
-      this.$store.dispatch("getLists", this.boardId);
+    this.$store.dispatch("getLists", this.boardId)
   },
   computed: {
     board() {
