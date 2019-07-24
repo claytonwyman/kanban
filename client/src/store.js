@@ -104,13 +104,13 @@ export default new Vuex.Store({
     addList({ commit, dispatch }, listData) {
       api.post('lists', listData)
         .then(serverList => {
-          dispatch('getLists')
+          dispatch('getLists', listData.boardId)
         })
     },
-    deleteList({ commit, dispatch }, delId) {
-      api.delete('lists/' + delId)
+    deleteList({ commit, dispatch }, payload) {
+      api.delete('lists/' + payload._id)
         .then(res => {
-          dispatch('getLists')
+          dispatch('getLists', payload.boardId)
         })
     }
     //#endregion

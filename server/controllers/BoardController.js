@@ -37,13 +37,14 @@ export default class BoardsController {
     } catch (error) { next(error) }
   }
 
-async getListsAtBoard(req, res,next){
-  try {
-    let data = await listService.find({boardId: req.params.id})
-  } catch (error) {
-    next(error)
+  async getListsAtBoard(req, res,next){
+    try {
+      let data = await listService.find({boardId: req.params.id})
+      return res.send(data)
+    } catch (error) {
+      next(error)
+    }
   }
-}
   async create(req, res, next) {
     try {
       req.body.authorId = req.session.uid
