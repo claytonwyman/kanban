@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Boards from './views/Boards.vue'
 import Board from './views/Board.vue'
 import Login from './views/Login.vue'
+import Tasks from './views/Tasks.vue'
 
 Vue.use(Router)
 
@@ -27,6 +28,11 @@ export default new Router({
     {
       path: "*",
       redirect: '/'
+    },
+    {
+      path: '/tasks',
+      name: 'tasks',
+      component: Tasks
     }
   ]
 })
