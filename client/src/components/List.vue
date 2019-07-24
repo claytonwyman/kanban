@@ -1,14 +1,14 @@
 <template>
   <div class="list-items">
-    <div v-for="list in lists" :key="list._id">
-      <h3>{{list.title}}</h3>
-      <button @click="deleteList(list)">Delete</button>
-      <form class="m-2" @submit.prevent="addTask">
-        <h4>Create a Task</h4>
-        <input type="text" placeholder="title" v-model="newTask.title" required />
-        <button class="btn btn-primary m-1" type="submit">Create Task</button>
-      </form>
-    </div>
+    <h3>{{list.title}}</h3>
+    <button @click="deleteList(list)">Delete List</button>
+    <form class="m-2" @submit.prevent="addTask">
+      <h4>Create a Task</h4>
+      <input type="text" placeholder="title" v-model="newTask.title" required />
+      <button class="btn btn-primary m-1" type="submit">Create Task</button>
+    </form>
+
+    <tasks :listId="list._id" v-for="task in tasks" :key="task._id" :task="task"></tasks>
   </div>
 </template>
 
@@ -17,15 +17,15 @@ import tasks from './Tasks'
 
 export default {
   name: 'list',
-  props: ["boardId", "listId"],
+  props: ["list"],
   mounted() {
-    this.$store.dispatch("getLists", this.boardId);
+    this.$store.dispatch("getTasks", this.listId)
   },
   data() {
     return {
       newTask: {
         title: "",
-        listId: this.listId
+        listId: this.list._id
       }
     };
   },
@@ -50,7 +50,7 @@ export default {
     },
     addTask() {
       this.$store.dispatch("addTask", this.newTask);
-      this.newTask = { title: "", listId: this.listId };
+      this.newTask = { title: "", listId: this.list._id };
     }
   }
 }

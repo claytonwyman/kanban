@@ -11,7 +11,7 @@
       </form>
     </div>
 
-    <list :boardId="boardId"></list>
+    <list :boardId="boardId" v-for="list in lists" :key="list._id" :list="list"></list>
   </div>
 </template>
 

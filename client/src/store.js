@@ -120,7 +120,7 @@ export default new Vuex.Store({
     getTasks({ commit, dispatch }, payload) {
       api.get('lists/' + payload + '/tasks')
       .then(res => {
-        commit('setLists', res.data)
+        commit('setTasks', res.data)
       })
     },
     addTask({ commit, dispatch }, taskData) {
