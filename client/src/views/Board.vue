@@ -1,19 +1,22 @@
-<template>
-  <div class="board">
+<template >
+  <div class="board container">
     <h1>{{board.title}}</h1>
-    <router-link to="/">Return to boards</router-link>
+    <p class="font-italic">{{board.description}}</p>
+    <router-link to="/">&#x2190; Return to boards</router-link>
+    <div class="col-12 mb-4 mt-2 border d-flex flex-column">
+      <form class="m-2" @submit.prevent="addList">
+        <h4>Create a List</h4>
+        <input type="text" placeholder="title" v-model="newList.title" required />
+        <button class="btn btn-primary m-1" type="submit">Create List</button>
+      </form>
+    </div>
 
-    <form @submit.prevent="addList">
-      <input type="text" placeholder="title" v-model="newList.title" required>
-      <button type="submit">Create List</button>
-    </form>
-    
     <list :boardId="boardId"></list>
   </div>
 </template>
 
 <script>
-import list from "../components/List"
+import list from "../components/List";
 
 export default {
   name: "board",
@@ -24,20 +27,18 @@ export default {
         title: "",
         boardId: this.boardId
       }
-    }
+    };
   },
-  mounted(){
+  mounted() {
     this.$store.dispatch("getActiveBoard", this.boardId),
-    this.$store.dispatch("getLists", this.boardId);
+      this.$store.dispatch("getLists", this.boardId);
   },
   computed: {
     board() {
-      return this.$store.state.activeBoard
+      return this.$store.state.activeBoard;
     },
     lists() {
-      return (
-        this.$store.state.lists
-      );
+      return this.$store.state.lists;
     }
   },
   components: {
