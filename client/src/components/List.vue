@@ -19,7 +19,7 @@ export default {
   name: 'list',
   props: ["list"],
   mounted() {
-    this.$store.dispatch("getTasks", this.listId)
+    this.$store.dispatch("getTasks", this.list._id)
   },
   data() {
     return {

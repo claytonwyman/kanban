@@ -1,13 +1,14 @@
 <template>
     <div class="tasks">
-        <h3>{{task.title}}</h3>
+        <h4>{{task.title}}</h4>
+        <button @click="deleteTask(task)">Delete Task</button>
     </div>
 </template>
 
 <script>
 export default {
     name: 'tasks',
-    props: ["listId"],
+    props: ["task"],
     mounted() {
         
     },
@@ -18,6 +19,11 @@ export default {
             );
         }
     },
+    methods: {
+        deleteTask(task) {
+            this.$store.dispatch('deleteTask', task)
+        }
+    }
 }
 </script>
 
