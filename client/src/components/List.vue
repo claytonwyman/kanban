@@ -7,6 +7,7 @@
 
     <div v-for="list in lists" :key="list._id">
       <h3>{{list.title}}</h3>
+      <button @click="deleteList(list._id)">Delete</button>
     </div>
   </div>
 </template>
@@ -37,6 +38,9 @@ export default {
     addList() {
       this.$store.dispatch("addList", this.newList);
       this.newList = { title: "", boardId: this.boardId };
+    },
+    deleteList(delId) {
+      this.$store.dispatch('deleteList', delId)
     }
   }
 }

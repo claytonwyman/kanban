@@ -95,6 +95,12 @@ export default new Vuex.Store({
         .then(serverList => {
           dispatch('getLists')
         })
+    },
+    deleteList({ commit, dispatch }, delId) {
+      api.delete('lists/' + delId)
+        .then(res => {
+          dispatch('getLists')
+        })
     }
     //#endregion
 
