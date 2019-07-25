@@ -1,8 +1,8 @@
 <template >
-  <div class="board container">
+  <div class="board container-fluid">
+    <router-link class="d-flex flex-row-left" to="/">&#x2190; Return to boards</router-link>
     <h1>{{board.title}}</h1>
     <p class="font-italic">{{board.description}}</p>
-    <router-link to="/">&#x2190; Return to boards</router-link>
     <div class="col-12 mb-4 mt-2 border d-flex flex-column">
       <form class="m-2" @submit.prevent="addList">
         <h4>Create a List</h4>
@@ -31,7 +31,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getActiveBoard", this.boardId),
-    this.$store.dispatch("getLists", this.boardId)
+      this.$store.dispatch("getLists", this.boardId);
   },
   computed: {
     board() {

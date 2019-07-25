@@ -2,7 +2,7 @@
   <div class="list-items">
     <h3>{{list.title}}</h3>
     <button @click="deleteList(list)">Delete List</button>
-    <form class="m-2" @submit.prevent="addTask">
+    <form class="m-2 border" @submit.prevent="addTask">
       <h4>Create a Task</h4>
       <input type="text" placeholder="title" v-model="newTask.title" required />
       <button class="btn btn-primary m-1" type="submit">Create Task</button>
@@ -13,13 +13,13 @@
 </template>
 
 <script>
-import tasks from './Tasks'
+import tasks from "./Tasks";
 
 export default {
-  name: 'list',
+  name: "list",
   props: ["list"],
   mounted() {
-    this.$store.dispatch("getTasks", this.list._id)
+    this.$store.dispatch("getTasks", this.list._id);
   },
   data() {
     return {
@@ -31,14 +31,10 @@ export default {
   },
   computed: {
     lists() {
-      return (
-        this.$store.state.lists
-      );
+      return this.$store.state.lists;
     },
     tasks() {
-      return (
-        this.$store.state.tasks
-      );
+      return this.$store.state.tasks;
     }
   },
   components: {
@@ -46,14 +42,14 @@ export default {
   },
   methods: {
     deleteList(list) {
-      this.$store.dispatch('deleteList', list)
+      this.$store.dispatch("deleteList", list);
     },
     addTask() {
       this.$store.dispatch("addTask", this.newTask);
       this.newTask = { title: "", listId: this.list._id };
     }
   }
-}
+};
 </script>
 
 <style scoped>
