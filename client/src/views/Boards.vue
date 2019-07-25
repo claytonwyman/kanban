@@ -2,9 +2,9 @@
   <div class="boards container-fluid bg-light">
     <nav class="navbar navbar-expand-lg navbar-light bg-secondary d-flex justify-content-around">
       <a class="navbar-brand text-light" href>Kanban</a>
-      <a
+      <h5
         class="navbar-brand text-light"
-      >Logged in as: {{this.$store.state.user.name}} ({{this.$store.state.user.email}})</a>
+      >Logged in as: {{this.$store.state.user.name}} ({{this.$store.state.user.email}})</h5>
       <a class="navbar-brand text-light" @click="logout()">Logout</a>
     </nav>
     <div class="row">
