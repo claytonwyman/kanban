@@ -1,5 +1,10 @@
 <template >
   <div class="board container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-around">
+      <a class="navbar-brand" href="#">Kanban</a>
+      <a class="navbar-brand">Logged in as: (Username)</a>
+      <a class="navbar-brand" href>Logout</a>
+    </nav>
     <router-link class="d-flex flex-row-left" to="/">&#x2190; Return to boards</router-link>
     <h1>{{board.title}}</h1>
     <p class="font-italic">{{board.description}}</p>

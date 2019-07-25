@@ -1,5 +1,10 @@
 <template>
   <div class="boards container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-around">
+      <a class="navbar-brand" href="#">Kanban</a>
+      <a class="navbar-brand">Logged in as: (Username)</a>
+      <a class="navbar-brand" href>Logout</a>
+    </nav>
     <div class="row">
       <div class="col-12">
         <h1>My Boards</h1>
