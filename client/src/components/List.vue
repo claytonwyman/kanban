@@ -25,7 +25,8 @@ export default {
     return {
       newTask: {
         title: "",
-        listId: this.list._id
+        listId: this.list._id,
+        boardId: this.list.boardId
       }
     };
   },
@@ -34,7 +35,7 @@ export default {
       return this.$store.state.lists;
     },
     tasks() {
-      return this.$store.state.tasks;
+      return this.$store.state.tasks[this.list._id];
     }
   },
   components: {
@@ -46,7 +47,7 @@ export default {
     },
     addTask() {
       this.$store.dispatch("addTask", this.newTask);
-      this.newTask = { title: "", listId: this.list._id };
+      this.newTask = { title: "", listId: this.list._id, boardId: this.list.boardId };
     }
   }
 };

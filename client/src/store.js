@@ -21,8 +21,8 @@ export default new Vuex.Store({
     boards: [],
     activeBoard: {},
     lists: [],
-    tasks: [],
-    comments: []
+    tasks: {},
+    comments: {}
   },
   mutations: {
     setUser(state, user) {
@@ -37,11 +37,11 @@ export default new Vuex.Store({
     setLists(state, lists) {
       state.lists = lists
     },
-    setTasks(state, tasks) {
-      state.tasks = tasks
+    setTasks(state, taskData) {
+      Vue.set(state.tasks, taskData.listId, taskData.tasks)
     },
-    setComments(state, comments) {
-      state.comments = comments
+    setComments(state, commentData) {
+      Vue.set(state.comments, commentData.taskId, commentData.comments)
     }
   },
   actions: {
@@ -124,7 +124,7 @@ export default new Vuex.Store({
     getTasks({ commit, dispatch }, payload) {
       api.get('lists/' + payload + '/tasks')
       .then(res => {
-        commit('setTasks', res.data)
+        commit('setTasks', {tasks: res.data, listId: payload})
       })
     },
     addTask({ commit, dispatch }, taskData) {
@@ -142,7 +142,7 @@ export default new Vuex.Store({
     getComments({ commit, dispatch }, payload) {
       api.get('tasks/' + payload + '/comments')
       .then(res => {
-        commit('setComments', res.data)
+        commit('setComments', {comments: res.data, taskId: payload})
       })
     },
     addComment({ commit, dispatch }, commentData) {

@@ -26,7 +26,9 @@ export default {
     return {
       newComment: {
         title: "",
-        taskId: this.task._id
+        taskId: this.task._id,
+        boardId: this.task.boardId,
+        listId: this.task.listId
       }
     };
   },
@@ -35,7 +37,7 @@ export default {
       return this.$store.state.tasks;
     },
     comments() {
-      return this.$store.state.comments;
+      return this.$store.state.comments[this.task._id];
     }
   },
   components: {
@@ -47,7 +49,7 @@ export default {
     },
     addComment() {
       this.$store.dispatch("addComment", this.newComment);
-      this.newTask = { title: "", taskId: this.task._id };
+      this.newTask = { title: "", taskId: this.task._id, listId: this.task.listId, boardId: this.task.boardId };
     }
   }
 };

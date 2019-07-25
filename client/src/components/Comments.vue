@@ -1,6 +1,7 @@
 <template>
     <div class="comments-display">
         <p>{{comment.title}}</p>
+        <button @click="deleteComment(comment)">Delete Comment</button>
     </div>
 </template>
 
