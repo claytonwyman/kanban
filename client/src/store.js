@@ -161,7 +161,11 @@ export default new Vuex.Store({
         })
     },
     moveTask({ commit, dispatch }, payload) {
-      
+      api.put('tasks/' + payload.task._id, {listId: payload.listId})
+        .then(res => {
+          dispatch('getTasks', payload.listId)
+          dispatch('getTasks', payload.task.listId)
+        })
     }
     //#endregion
 

@@ -3,6 +3,17 @@
     <div class="card border-secondary" style="width: 18rem;">
       <div class="card-body">
         <h4>{{task.title}}</h4>
+
+        <button style="display: inline-block;" class="btn btn-sm btn-outline-light dropdown-toggle"
+          type="button" id="dropwdownMenuButton" data-toggle="dropdown">
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" :key="list._id" v-for="list in lists" @click="moveTask(list._id)">Move To:
+            {{list.title}}</a>
+        </div>
+
+        <br>
+
         <button class="btn btn-danger btn-sm" @click="deleteTask(task)">Delete Task</button>
 
         <form class="m-2 border bg-secondary" @submit.prevent="addComment">
@@ -50,6 +61,9 @@ export default {
     },
     comments() {
       return this.$store.state.comments[this.task._id];
+    },
+    lists() {
+      return this.$store.state.lists;
     }
   },
   components: {
@@ -67,6 +81,13 @@ export default {
         listId: this.task.listId,
         boardId: this.task.boardId
       };
+    },
+    moveTask(listId) {
+      let payload = {
+        task: this.task,
+        listId: listId
+      }
+      this.$store.dispatch("moveTask", payload)
     }
   }
 };
