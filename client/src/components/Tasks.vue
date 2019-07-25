@@ -4,7 +4,7 @@
       <div class="card-body">
         <h4>{{task.title}}</h4>
 
-        <div class="dropdown">
+        <div class="dropdown" id="list-items">
           <button
             style="display: inline-block;"
             class="btn btn-primary btn-sm btn-outline-light dropdown-toggle"
@@ -107,4 +107,7 @@ export default {
 </script>
 
 <style>
+#list-items {
+  cursor: pointer;
+}
 </style>
