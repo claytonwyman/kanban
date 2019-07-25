@@ -159,6 +159,9 @@ export default new Vuex.Store({
         .then(res => {
           dispatch('getComments', payload.taskId)
         })
+    },
+    moveTask({ commit, dispatch }, payload) {
+      
     }
     //#endregion
 

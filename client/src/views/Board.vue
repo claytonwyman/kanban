@@ -18,6 +18,12 @@
         <input type="text" placeholder="title" v-model="newList.title" required />
         <button class="btn btn-primary m-1" type="submit">Create List</button>
       </form>
+      <!-- <form class="m-2" @submit.prevent="moveTask">
+        <h4 class="text-light">Move a Task</h4>
+        <input type="text" placeholder="Target Task" v-model="moveList[0]" required />
+        <input type="text" placeholder="List Location" v-model="moveList[1]" required />
+        <button class="btn btn-primary m-1" type="submit">Move Task</button>
+      </form> -->
     </div>
     <div class="row">
       <list
@@ -67,6 +73,9 @@ export default {
     },
     logout() {
       this.$store.dispatch("logout");
+    },
+    moveTask() {
+      this.$store.dispatch("moveTask", movelist);
     }
   }
 };
