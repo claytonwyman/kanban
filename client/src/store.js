@@ -42,6 +42,9 @@ export default new Vuex.Store({
     },
     setComments(state, commentData) {
       Vue.set(state.comments, commentData.taskId, commentData.comments)
+    },
+    resetState(state, user) {
+      state.user = {}
     }
   },
   actions: {

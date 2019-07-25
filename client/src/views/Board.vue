@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-around">
       <a class="navbar-brand" href="#">Kanban</a>
       <a class="navbar-brand">Logged in as: (Username)</a>
-      <a class="navbar-brand" href>Logout</a>
+      <a class="navbar-brand" @click="logout()">Logout</a>
     </nav>
     <router-link class="d-flex flex-row-left" to="/">&#x2190; Return to boards</router-link>
     <h1>{{board.title}}</h1>
@@ -53,6 +53,9 @@ export default {
     addList() {
       this.$store.dispatch("addList", this.newList);
       this.newList = { title: "", boardId: this.boardId };
+    },
+    logout() {
+      this.$store.dispatch("logout");
     }
   }
 };
