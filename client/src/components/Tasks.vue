@@ -4,15 +4,28 @@
       <div class="card-body">
         <h4>{{task.title}}</h4>
 
-        <button style="display: inline-block;" class="btn btn-sm btn-outline-light dropdown-toggle"
-          type="button" id="dropwdownMenuButton" data-toggle="dropdown">
-        </button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" :key="list._id" v-for="list in lists" @click="moveTask(list._id)">Move To:
-            {{list.title}}</a>
+        <div class="dropdown">
+          <button
+            style="display: inline-block;"
+            class="btn btn-primary btn-sm btn-outline-light dropdown-toggle"
+            type="button"
+            id="dropwdownMenuButton"
+            data-toggle="dropdown"
+          ></button>
+          <div class="dropdown-menu">
+            <a
+              class="dropdown-item"
+              :key="list._id"
+              v-for="list in lists"
+              @click="moveTask(list._id)"
+            >
+              Move To:
+              {{list.title}}
+            </a>
+          </div>
         </div>
 
-        <br>
+        <br />
 
         <button class="btn btn-danger btn-sm" @click="deleteTask(task)">Delete Task</button>
 
@@ -86,8 +99,8 @@ export default {
       let payload = {
         task: this.task,
         listId: listId
-      }
-      this.$store.dispatch("moveTask", payload)
+      };
+      this.$store.dispatch("moveTask", payload);
     }
   }
 };
