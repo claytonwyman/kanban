@@ -1,15 +1,27 @@
 <template>
   <div class="tasks">
-    <h4>{{task.title}}</h4>
-    <button @click="deleteTask(task)">Delete Task</button>
+    <div class="card border-secondary" style="width: 18rem;">
+      <div class="card-body">
+        <h4>{{task.title}}</h4>
+        <button class="btn btn-danger btn-sm" @click="deleteTask(task)">Delete Task</button>
 
-    <form class="m-2 border" @submit.prevent="addComment">
-      <h4>Create a Comment</h4>
-      <input type="text" placeholder="title" v-model="newComment.title" required />
-      <button class="btn btn-primary m-1" type="submit">Create Comment</button>
-    </form>
-
-    <comments :taskId="task._id" v-for="comment in comments" :key="comment._id" :comment="comment"></comments>
+        <form class="m-2 border bg-secondary" @submit.prevent="addComment">
+          <h4 class="text-light">Comments</h4>
+          <input type="text" placeholder="title" v-model="newComment.title" required />
+          <button class="btn btn-primary btn-sm m-1" type="submit">Create Comment</button>
+        </form>
+        <div class="row">
+          <comments
+            class="d-flex flex-row justify-content-around"
+            style="width:23vw;"
+            :taskId="task._id"
+            v-for="comment in comments"
+            :key="comment._id"
+            :comment="comment"
+          ></comments>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -49,7 +61,12 @@ export default {
     },
     addComment() {
       this.$store.dispatch("addComment", this.newComment);
-      this.newTask = { title: "", taskId: this.task._id, listId: this.task.listId, boardId: this.task.boardId };
+      this.newTask = {
+        title: "",
+        taskId: this.task._id,
+        listId: this.task.listId,
+        boardId: this.task.boardId
+      };
     }
   }
 };

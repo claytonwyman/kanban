@@ -1,18 +1,20 @@
 <template>
-  <div class="boards container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-around">
-      <a class="navbar-brand" href="#">Kanban</a>
-      <a class="navbar-brand">Logged in as: (Username)</a>
-      <a class="navbar-brand" @click="logout()">Logout</a>
+  <div class="boards container-fluid bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-secondary d-flex justify-content-around">
+      <a class="navbar-brand text-light" href>Kanban</a>
+      <a
+        class="navbar-brand text-light"
+      >Logged in as: {{this.$store.state.user.name}} ({{this.$store.state.user.email}})</a>
+      <a class="navbar-brand text-light" @click="logout()">Logout</a>
     </nav>
     <div class="row">
       <div class="col-12">
         <h1>My Boards</h1>
       </div>
     </div>
-    <div class="col-12 mb-4 border d-flex flex-column" style="height:25vh;">
+    <div class="col-12 mb-4 border d-flex flex-column bg-secondary" style="height:25vh;">
       <form @submit.prevent="addBoard">
-        <h4 class="mt-2">Create a board:</h4>
+        <h4 class="mt-2 text-light">Create a board:</h4>
         <input
           class="m-2"
           type="text"
@@ -30,16 +32,21 @@
         <button class="btn btn-primary m-2" type="submit">Create Board</button>
       </form>
     </div>
-    <div
-      class="d-flex flex-column align-items-center border m-1 text-left"
-      v-for="board in boards"
-      :key="board._id"
-    >
-      <router-link :to="{name: 'board', params: {boardId: board._id}}">{{board.title}}</router-link>
-      <div>
-        <p class="font-italic">{{board.description}}</p>
+    <div class="row">
+      <div
+        v-for="board in boards"
+        :key="board._id"
+        class="card m-1 d-flex flex-row justify-content-around"
+        style="width: 18rem;"
+      >
+        <div class="card-body">
+          <router-link :to="{name: 'board', params: {boardId: board._id}}">{{board.title}}</router-link>
+          <div>
+            <p class="font-italic">{{board.description}}</p>
+          </div>
+          <button class="btn btn-sm btn-danger m-2" @click="deleteBoard(board._id)">Delete</button>
+        </div>
       </div>
-      <button class="btn btn-sm btn-danger m-2" @click="deleteBoard(board._id)">Delete</button>
     </div>
   </div>
 </template>
