@@ -18,6 +18,14 @@
       <p v-if="loginForm">No account? Click here to Register</p>
       <p v-else>Already have an account? Click here to Login</p>
     </div>
+    <h2 class="text-light">Kanban is a project built in the Vue.js framework</h2>
+    <h5
+      class="m-2"
+    >This project was constructed by Clayton Wyman and Christopher O'Berry utilizing Vue.js, Bootstrap, Javascript, CSS, HTML5, MongoDB, Node.js, Axios, ESM, and Mongoose.</h5>
+    <p class="mb-4">Register or Login to start making boards!</p>
+    <p
+      class="fixed-bottom"
+    >Constructed for Boise CodeWorks Full Stack Development Bootcamp, Late Summer 2019</p>
   </div>
 </template>
 
