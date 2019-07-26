@@ -3,14 +3,22 @@
     <nav
       class="navbar navbar-expand-lg navbar-light bg-secondary text-light d-flex justify-content-around"
     >
-      <a class="navbar-brand text-light" href>Kanban</a>
+      <a class="navbar-brand text-light" href>
+        <i class="fas fa-chalkboard"></i>Kanban
+      </a>
       <a
         class="navbar-brand"
       >Logged in as: {{this.$store.state.user.name}} ({{this.$store.state.user.email}})</a>
-      <a class="text-light" @click="logout()">Logout</a>
+      <a class="text-light" @click="logout()">
+        Logout
+        <i class="fas fa-sign-out-alt"></i>
+      </a>
     </nav>
     <router-link class="d-flex flex-row-left text-light" to="/">&#x2190; Return to boards</router-link>
-    <h1>{{board.title}}</h1>
+    <h1 class="text-light">
+      <i class="fas fa-chalkboard"></i>
+      {{board.title}}
+    </h1>
     <p class="font-italic text-light">{{board.description}}</p>
     <div class="col-12 mb-4 mt-2 border bg-secondary d-flex flex-column">
       <form class="m-2" @submit.prevent="addList">

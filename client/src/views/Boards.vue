@@ -1,15 +1,22 @@
 <template>
   <div class="boards container-fluid" id="boards">
     <nav class="navbar navbar-expand-lg navbar-light bg-secondary d-flex justify-content-around">
-      <a class="navbar-brand text-light" href>Kanban</a>
+      <a class="navbar-brand text-light" href>
+        <i class="fas fa-chalkboard"></i>Kanban
+      </a>
       <h5
         class="navbar-brand text-light"
       >Logged in as: {{this.$store.state.user.name}} ({{this.$store.state.user.email}})</h5>
-      <a class="navbar-brand text-light" @click="logout()">Logout</a>
+      <a class="navbar-brand text-light" @click="logout()">
+        Logout
+        <i class="fas fa-sign-out-alt"></i>
+      </a>
     </nav>
     <div class="row">
-      <div class="col-12">
-        <h1>My Boards</h1>
+      <div class="col-12 m-2">
+        <h1 class="text-light">
+          <i class="fas fa-chalkboard"></i> My Boards
+        </h1>
       </div>
     </div>
     <div class="col-12 mb-4 border d-flex flex-column bg-secondary" style="height:25vh;">
@@ -41,13 +48,18 @@
         id="board-card"
       >
         <div class="card-body">
-          <router-link
-            class="text-light"
-            :to="{name: 'board', params: {boardId: board._id}}"
-          >{{board.title}}</router-link>
+          <router-link class="text-light" :to="{name: 'board', params: {boardId: board._id}}">
+            <i class="fas fa-chalkboard"></i>
+            {{board.title}}
+          </router-link>
           <div>
             <p class="font-italic">{{board.description}}</p>
           </div>
+          <img
+            class="border border-light rounded"
+            src="https://picsum.photos/150"
+            alt="Board Image"
+          />
           <button class="btn btn-sm btn-danger m-2" @click="deleteBoard(board._id)">Delete</button>
         </div>
       </div>

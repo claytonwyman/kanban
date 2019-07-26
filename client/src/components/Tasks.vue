@@ -2,7 +2,10 @@
   <div class="tasks">
     <div class="card border-secondary bg-light" style="width: 18rem;">
       <div class="card-body">
-        <h4>{{task.title}}</h4>
+        <h4>
+          <i class="fas fa-tasks"></i>
+          {{task.title}}
+        </h4>
 
         <div class="dropdown" id="list-items">
           <button

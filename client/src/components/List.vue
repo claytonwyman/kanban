@@ -2,7 +2,10 @@
   <div class="list-items">
     <div class="card border border-secondary" id="list-card" style="width: 90vw;">
       <div class="card-body">
-        <h3>{{list.title}}</h3>
+        <h3 class="text-light">
+          <i class="fas fa-clipboard-list"></i>
+          {{list.title}}
+        </h3>
 
         <button class="btn btn-danger btn-sm" @click="deleteList(list)">Delete List</button>
         <form class="m-2 border bg-secondary" @submit.prevent="addTask">

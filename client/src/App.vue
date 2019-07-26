@@ -18,6 +18,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   background-color: rgb(116, 112, 170);
+
+  background-size: cover;
 }
 
 #nav {

@@ -2,7 +2,10 @@
   <div class="comments-display d-flex">
     <div class="card text-light" style="width: 18rem;" id="comment-card">
       <div class="card-body">
-        <p>{{comment.title}}</p>
+        <p>
+          <i class="fas fa-thumbtack"></i>
+          {{comment.title}}
+        </p>
         <button class="btn btn-danger btn-sm" @click="deleteComment(comment)">Delete Comment</button>
       </div>
     </div>
