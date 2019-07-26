@@ -1,5 +1,8 @@
 <template>
   <div class="login">
+    <h4 class="text-light">
+      <i class="fas fa-chalkboard"></i>Kanban
+    </h4>
     <form v-if="loginForm" @submit.prevent="loginUser">
       <input type="email" v-model="creds.email" placeholder="email" />
       <input type="password" v-model="creds.password" placeholder="password" />
