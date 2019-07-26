@@ -3,15 +3,15 @@
     <form v-if="loginForm" @submit.prevent="loginUser">
       <input type="email" v-model="creds.email" placeholder="email" />
       <input type="password" v-model="creds.password" placeholder="password" />
-      <button class="btn btn-success" type="submit">Login</button>
+      <button class="btn btn-primary" type="submit">Login</button>
     </form>
     <form v-else @submit.prevent="register">
       <input type="text" v-model="newUser.name" placeholder="name" />
       <input type="email" v-model="newUser.email" placeholder="email" />
       <input type="password" v-model="newUser.password" placeholder="password" />
-      <button class="btn btn-warning" type="submit">Create Account</button>
+      <button class="btn btn-primary" type="submit">Create Account</button>
     </form>
-    <div class="action" @click="loginForm = !loginForm">
+    <div class="action text-light" @click="loginForm = !loginForm">
       <p v-if="loginForm">No account? Click here to Register</p>
       <p v-else>Already have an account? Click here to Login</p>
     </div>
@@ -55,5 +55,8 @@ export default {
 <style>
 .action {
   cursor: pointer;
+}
+#login {
+  background-color: rgb(116, 112, 170);
 }
 </style>

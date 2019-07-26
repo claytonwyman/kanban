@@ -1,6 +1,6 @@
 <template>
   <div class="comments-display d-flex">
-    <div class="card" style="width: 18rem;">
+    <div class="card text-light" style="width: 18rem;" id="comment-card">
       <div class="card-body">
         <p>{{comment.title}}</p>
         <button class="btn btn-danger btn-sm" @click="deleteComment(comment)">Delete Comment</button>
@@ -28,4 +28,7 @@ export default {
 </script>
 
 <style>
+#comment-card {
+  background-color: rgb(166, 165, 170);
+}
 </style>

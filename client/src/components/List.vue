@@ -1,9 +1,9 @@
 <template>
-  <div class="list-items bg-light">
-    <div class="card border border-secondary" style="width: 90vw;">
+  <div class="list-items">
+    <div class="card border border-secondary" id="list-card" style="width: 90vw;">
       <div class="card-body">
         <h3>{{list.title}}</h3>
-        
+
         <button class="btn btn-danger btn-sm" @click="deleteList(list)">Delete List</button>
         <form class="m-2 border bg-secondary" @submit.prevent="addTask">
           <h4 class="text-light">Create a Task</h4>
@@ -72,4 +72,7 @@ export default {
 </script>
 
 <style scoped>
+#list-card {
+  background-color: rgb(166, 165, 170);
+}
 </style>

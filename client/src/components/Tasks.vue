@@ -1,6 +1,6 @@
 <template>
   <div class="tasks">
-    <div class="card border-secondary" style="width: 18rem;">
+    <div class="card border-secondary bg-light" style="width: 18rem;">
       <div class="card-body">
         <h4>{{task.title}}</h4>
 

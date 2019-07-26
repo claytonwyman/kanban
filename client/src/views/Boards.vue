@@ -1,5 +1,5 @@
 <template>
-  <div class="boards container-fluid bg-light">
+  <div class="boards container-fluid" id="boards">
     <nav class="navbar navbar-expand-lg navbar-light bg-secondary d-flex justify-content-around">
       <a class="navbar-brand text-light" href>Kanban</a>
       <h5
@@ -38,9 +38,13 @@
         :key="board._id"
         class="card m-1 d-flex flex-row justify-content-around"
         style="width: 18rem;"
+        id="board-card"
       >
         <div class="card-body">
-          <router-link :to="{name: 'board', params: {boardId: board._id}}">{{board.title}}</router-link>
+          <router-link
+            class="text-light"
+            :to="{name: 'board', params: {boardId: board._id}}"
+          >{{board.title}}</router-link>
           <div>
             <p class="font-italic">{{board.description}}</p>
           </div>
@@ -84,3 +88,12 @@ export default {
   }
 };
 </script>
+
+<style>
+#boards {
+  background-color: rgb(116, 112, 170);
+}
+#board-card {
+  background-color: rgb(166, 165, 170);
+}
+</style>
