@@ -10,7 +10,7 @@
         <button class="btn btn-danger btn-sm" @click="deleteList(list)">Delete List</button>
         <form class="m-2 border bg-secondary" @submit.prevent="addTask">
           <h4 class="text-light">Create a Task</h4>
-          <input type="text" placeholder="title" v-model="newTask.title" required />
+          <input type="text" placeholder="Task name" v-model="newTask.title" required />
           <button class="btn btn-primary btn-sm m-1" type="submit">Create Task</button>
         </form>
 

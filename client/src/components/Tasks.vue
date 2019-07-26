@@ -34,7 +34,7 @@
 
         <form class="m-2 border bg-secondary" @submit.prevent="addComment">
           <h4 class="text-light">Comments</h4>
-          <input type="text" placeholder="title" v-model="newComment.title" required />
+          <input type="text" placeholder="Add a comment" v-model="newComment.title" required />
           <button class="btn btn-primary btn-sm m-1" type="submit">Create Comment</button>
         </form>
         <div class="row">

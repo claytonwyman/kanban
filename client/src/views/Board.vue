@@ -23,7 +23,7 @@
     <div class="col-12 mb-4 mt-2 border bg-secondary d-flex flex-column">
       <form class="m-2" @submit.prevent="addList">
         <h4 class="text-light">Create a List</h4>
-        <input type="text" placeholder="title" v-model="newList.title" required />
+        <input type="text" placeholder="List name" v-model="newList.title" required />
         <button class="btn btn-primary m-1" type="submit">Create List</button>
       </form>
     </div>
